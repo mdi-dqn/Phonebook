@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Register {% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Register</h1>
+            <hr class="my-4">
+            <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.username|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.password|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ form.phone|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ form.age|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success"><i class="fas fa-database"></i> Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

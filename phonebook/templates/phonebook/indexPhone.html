@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+
+{% block title %} Phones | {{ contact.fullName }} {% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Phones</h1>
+            <p class="lead font-italic" style="color: orangered">{{ contact.fullName }}</p>
+            <hr class="my-4">
+                <p>
+                     <a  href="{% url 'phonebook:addPhone' contact.id %}" class="btn btn-outline-success"><i class="far fa-plus-square"></i> Add Phone</a>
+                </p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Number
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for phone in phones %}
+                        <tr>
+                            <td>
+                                {{ phone.typePhone }}
+                            </td>
+                            <td>
+                                {{ phone.number }}
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{% url 'phonebook:editPhone' phone.id %}" class="btn btn-outline-info">Edit</a>
+                                    <a href="{% url 'phonebook:deletePhone' phone.id %}" class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete this phone?')">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

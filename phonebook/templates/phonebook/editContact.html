@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Edit Contact {% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Edit Contact</h1>
+            <hr class="my-4">
+            <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.image|as_crispy_field }}
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ form.typeContact|as_crispy_field }}
+                    </div>
+                    <div class="col-md-8">
+                        {{ form.fullName|as_crispy_field }}
+                    </div>
+                </div>
+                {{ form.address|as_crispy_field }}
+                {{ form.description|as_crispy_field }}
+                <button type="submit" class="btn btn-success"><i class="fas fa-database"></i> Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

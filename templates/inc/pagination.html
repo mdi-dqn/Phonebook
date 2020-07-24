@@ -1,0 +1,19 @@
+<div class="container" style="width:250px; margin:0 auto; ">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if contacts.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ contacts.previous_page_number }}">{{ contacts.previous_page_number }}</a></li>
+        {% endif %}
+
+        {% if contacts.number > 1 %}
+          <li class="page-item active"><a class="page-link" href="?page={{ contacts.number }}">{{ contacts.number }}</a></li>
+        {% endif %}
+
+        {% if contacts.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ contacts.next_page_number }}">{{ contacts.next_page_number }}</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ contacts.paginator.num_pages }}">Last</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+</div>

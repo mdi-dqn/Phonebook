@@ -1,0 +1,54 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Details Contact | {{ contact.fullName }}  {% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Details Contact</h1>
+            <hr class="my-4">
+                <div>
+                    <img src="{{ contact.image.url }}" style="width:128px;height:128px;" /><hr />
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            Type
+                        </dt>
+                        <dd class="col-sm-10">
+                            {{ contact.typeContact }}
+                        </dd>
+                        <dt class="col-sm-2">
+                            Full Name
+                        </dt>
+                        <dd class="col-sm-10">
+                            {{ contact.fullName }}
+                        </dd>
+                        <dt class="col-sm-2">
+                            Address
+                        </dt>
+                        <dd class="col-sm-10">
+                            {{ contact.address }}
+                        </dd>
+                        <dt class="col-sm-2">
+                            Description
+                        </dt>
+                        <dd class="col-sm-10">
+                            {{ contact.description }}
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <a href="{% url 'phonebook:editContact' contact.id %}" class="btn btn-primary btn-block">Edit</a>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <a href="/"  class="btn btn-secondary btn-block"><i class="fade fa-table"></i>Back to List</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

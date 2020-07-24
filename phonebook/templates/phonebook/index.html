@@ -1,0 +1,59 @@
+{% extends '_base.html' %}
+
+{% block title %} Phonebook {% endblock %}
+
+{% block main %}
+<div class="container">
+    <h1>Contacts</h1><br />
+    <p><a href="{% url 'phonebook:addContact' %}" class="btn btn-outline-success"><i class="far fa-plus-square"></i> New Contact</a></p>
+    <main role="main" class="pb-3">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        FullName
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>
+                        <img alt="ax nist" src="{{ contact.image.url }}"  style="width:70px;height:70px;" />
+                    </td>
+                    <td>
+                        {{ contact.fullName }}
+                    </td>
+                    <td>
+                        {{ contact.address }}
+                    </td>
+                    <td>
+                        {{ contact.description }}
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a href="{% url 'phonebook:editContact' contact.id %}" class="btn btn-outline-info">Edit</a>
+                            <a href="{% url 'phonebook:detailsContact' contact.id %}" class="btn btn-outline-success">Details</a>
+                            <a href="{% url 'phonebook:deleteContact' contact.id %}" class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete this contact?')">Delete</a>
+                            <a href="{% url 'phonebook:indexPhone' contact.id %}" class="btn btn-outline-primary">Phones</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </main>
+</div>
+{% include 'inc/pagination.html' %}
+{% endblock %}

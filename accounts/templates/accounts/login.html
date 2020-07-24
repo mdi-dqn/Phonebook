@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<div class="container">
+    <div class="col-md-6 offset-md-3 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Login</h1>
+            <hr class="my-4">
+            <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    {{ form.username|as_crispy_field }}
+                </div>
+                <div class="col-md-12">
+                    {{ form.password|as_crispy_field }}
+                </div>
+                <button type="submit" class="btn btn-success col-md-4 offset-md-4">login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
